@@ -115,6 +115,81 @@ form label img {
   border-right: 1px solid #0B5563;
   background-color: #0B5563;
 }
+.sidebar .navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  height: 50px;
+  background-color: #9A94BC;
+  color:#07020D;
+}
+.sidebar .logo{
+  font-weight : bold ;
+}
+.sidebar .user {
+  display: flex;
+  align-items: center;
+  color: #07020D;
+}
+img{
+  width: 40px;
+  margin: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.sidebar .user button{
+  background-color: #ffffff;
+  color: #07020D;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 10px;
+  
+}
 .chat{
   flex:2;
 }
+.search {
+  border-bottom: 1px solid #0B5563;
+  padding: 10px;
+}
+
+.search {
+  border-bottom: 1px solid gray;
+}
+.searchForm {
+    padding: 10px;
+}
+.searchForm    input {
+      background-color: transparent;
+      color: white;
+      outline: none;
+      border-radius: 10px;
+      padding: 10px;
+
+
+      &::placeholder {
+        color: lightgray;
+      }
+    }
+  .userChat {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+  
+  }
+  .userChat:hover{
+    background-color: #9A94BC;
+    border-radius: 10px;
+  }
+  .userChat img {
+    width: 40px;
+    margin: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
