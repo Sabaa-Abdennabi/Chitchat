@@ -123,9 +123,11 @@ form label img {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  height: 50px;
+  height: 49px;
   background-color: aliceblue;
   color: #07020D;
+  border: none;
+  overflow: hidden;
 }
 
 .sidebar .logo {
@@ -220,11 +222,13 @@ img {
   display: flex;
   align-items: right;
   justify-content: center;
+  gap:10px;
 
 }
 
 .chat {
   flex: 2;
+
 }
 
 .chatinfo {
@@ -234,6 +238,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  border-bottom: #0B5563 1px  solid;
 }
 
 .chatIcons img {
@@ -242,4 +247,46 @@ img {
   cursor: pointer;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.chat .messages{
+  background-color: rgb(203, 225, 243);
+  height: 82%;
+  overflow-y: scroll;
+  padding: 20px;
+}
+.chat .input{
+  background-color: aliceblue;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px ;
+  border-top: #0B5563 1px  solid;
+}
+.chat input{
+  width: 82%;
+  padding: 13px;
+  border: none;
+}
+.chat input::placeholder{
+  color: #07020D;
+  font-size: 16px;
+}
+.chat img{
+  width: 40px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.chat button{
+  background-color: royalblue;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  border:none;
+
+  font-size: 14px;
 }
