@@ -121,7 +121,7 @@ form label img {
   justify-content: space-between;
   padding: 10px;
   height: 50px;
-  background-color: #9A94BC;
+  background-color: beige;
   color:#07020D;
 }
 .sidebar .logo{
@@ -139,10 +139,9 @@ img{
   object-fit: cover;
 }
 .sidebar .user button{
-  background-color: #ffffff;
+  background-color: beige;
   color: #07020D;
-  padding: 8px;
-  border: none;
+  padding: 2px 15px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 14px;
@@ -178,18 +177,24 @@ img{
   .userChat {
     display: flex;
     align-items: center;
-    padding: 10px;
-    gap: 10px;
     cursor: pointer;
   
   }
   .userChat:hover{
-    background-color: #9A94BC;
-    border-radius: 10px;
+    background-color: beige;
   }
   .userChat img {
     width: 40px;
     margin: 10px;
     border-radius: 50%;
     object-fit: cover;
+  }
+  .userChat span{
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .userChat p{
+    font-size: 15px;
+    color:beige;
+
   }
