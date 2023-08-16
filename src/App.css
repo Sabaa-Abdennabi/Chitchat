@@ -1,8 +1,24 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+@mixin mobile{
+  @media screen and (max-width: 480px){
+    @content;
+  }
+}
+@mixin tablet{
+  @media screen and (max-width: 768px){
+    @content;
+  }
+}
+@mixin laptop{
+  @media screen and (max-width: 1200px){
+    @content;
+  }
 }
 
 .formContainer {
@@ -110,13 +126,27 @@ form label img {
   display: flex;
   overflow: hidden;
   box-shadow: #0B5563 0px 0px 10px 0px;
+  @media (min-width: 0px) and (max-width: 768px) {
+    width: 90%;
+}
 }
 
 .sidebar {
   flex: 1;
   border-right: 1px solid #0B5563;
   background-color: #0B5563;
+  position: relative;
+  width: 0;
+  transition: width 0.3s ease-in-out;
 }
+
+
+@media (min-width: 0px) and (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 
 .sidebar .navbar {
   display: flex;
@@ -128,16 +158,22 @@ form label img {
   color: #07020D;
   border: none;
   overflow: hidden;
+  
 }
 
 .sidebar .logo {
   font-weight: bold;
+  @media (min-width: 0px) and (max-width: 970px) {
+    display:none;
+}
+
 }
 
 .sidebar .user {
   display: flex;
   align-items: center;
   color: #07020D;
+  
 }
 
 img {
@@ -155,6 +191,10 @@ img {
   cursor: pointer;
   font-size: 14px;
   margin: 10px;
+  @media (min-width: 0px) and (max-width: 1200px) {
+    position: absolute;
+    bottom: 10px;
+}
 
 }
 
@@ -181,6 +221,10 @@ img {
   outline: none;
   border-radius: 10px;
   padding: 10px;
+  width: 100%;
+  @media (min-width: 0px) and (max-width: 480px) {
+    display: none;
+  }
 
 
   &::placeholder {
@@ -192,6 +236,7 @@ img {
   display: flex;
   align-items: center;
   cursor: pointer;
+  
 
 }
 
@@ -210,11 +255,17 @@ img {
 .userChat span {
   font-weight: 500;
   font-size: 16px;
+  @media (min-width: 0px) and (max-width: 480px) {
+    display: none;
+  }
 }
 
 .userChat p {
   font-size: 15px;
   color: #07020D;
+  @media (min-width: 0px) and (max-width: 480px) {
+    display: none;
+  }
 
 }
 

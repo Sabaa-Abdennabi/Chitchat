@@ -4,11 +4,14 @@ import Add from '../images/add.png'
 import More from '../images/more.png'
 import Messages from './Messages'
 import Input from './Input'
+import { useState } from 'react'
+
 const Chat = () => {
+ 
   return (
     <div className='chat'>
       <div className="chatinfo">
-        <span>Sabaa</span>
+      <span id="toggle-sidebarf" >Sabaa</span>
         <div className="chatIcons">
           <img src={Cam} alt="" />
           <img src={Add} alt="" />
