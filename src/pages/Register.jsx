@@ -1,9 +1,8 @@
-import Add from "../images/addAvatar.png"
+import React, { useState } from "react";
+import Add from "../img/addAvatar.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../firebase";
-import { useState } from "react";
+import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db } from "../firebase"
 import { doc, setDoc } from "firebase/firestore";
 
 
@@ -28,31 +27,36 @@ const Register = () => {
       const storageRef = ref(storage, `${displayName + date}`);
 
       await uploadBytesResumable(storageRef, file)
-      .then(() => {getDownloadURL(storageRef)
-          .then(async (downloadURL) => {
-            try {
-              await updateProfile(res.user, {
-                displayName,
-                photoURL: downloadURL,
-              });
-              console.log(res.user);
+        .then(() => {
+          getDownloadURL(storageRef)
+            .then(async (downloadURL) => {
+              try {
+                //update the profile picture 
 
-              //create a user on the db
+                await  updateProfile(res.user,
+                  {
+                    displayName,
+                    photoURL: downloadURL,
+                  });
 
-              await setDoc(doc(db, "users", res.user.uid), {
-                uid: res.user.uid,
-                displayName,
-                email,
-                photoURL: downloadURL,
-              })
+                console.log(res.user);
 
-            }
-            catch (err) {
-              setErr(true);
-            }
-          });
-      }
-      );
+                //create a user on the db
+
+                await setDoc(doc(db, "users", res.user.uid),
+                {
+                  uid: res.user.uid,
+                  displayName,
+                  email,
+                  photoURL: downloadURL,
+                })
+
+              }
+              catch (err) {
+                setErr(true);
+              }
+            });
+        });
     } catch (err) {
       setErr(true);
     }
@@ -77,7 +81,7 @@ const Register = () => {
             <span>choose your profile picture !</span>
           </label>
           <button className='btn'>Sign up</button>
-          {err && <span style={{color:"red",  fontweight:"bold"}} className='error'>Something went wrong!</span>}
+          {err && <span style={{ color: "red", fontweight: "bold" }} className='error'>Something went wrong!</span>}
           <span className='link'>Already have an account? Login</span>
 
 
