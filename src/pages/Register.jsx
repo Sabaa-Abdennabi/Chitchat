@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Add from "../img/addAvatar.png";
+import Add from "../images/addAvatar.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore"; 
 
 
 const Register = () => {
@@ -29,33 +29,37 @@ const Register = () => {
       await uploadBytesResumable(storageRef, file)
         .then(() => {
           getDownloadURL(storageRef)
-            .then(async (downloadURL) => {
-              try {
-                //update the profile picture 
+            .then(
+              async (downloadURL) => {
+                try {
+                  //update the profile picture 
 
-                await  updateProfile(res.user,
-                  {
-                    displayName,
-                    photoURL: downloadURL,
-                  });
+                  await updateProfile(res.user,
+                    {
+                      displayName,
+                      photoURL: downloadURL,
+                    });
 
-                console.log(res.user);
+                  console.log(res.user);
 
-                //create a user on the db
+                  //create a user on the db
 
-                await setDoc(doc(db, "users", res.user.uid),
-                {
-                  uid: res.user.uid,
-                  displayName,
-                  email,
-                  photoURL: downloadURL,
-                })
+                  await setDoc(doc(db, "users", res.user.uid),
+                    {
+                      uid: res.user.uid,
+                      displayName,
+                      email,
+                      photoURL: downloadURL,
+                    });
+                  await setDoc(doc(db,"userChats",res.user.uid),{ })
 
-              }
-              catch (err) {
-                setErr(true);
-              }
-            });
+                }
+                catch (error) {
+                  console.log(error);
+                  
+
+                }
+              });
         });
     } catch (err) {
       setErr(true);
