@@ -69,17 +69,18 @@ const Search = () => {
       setErr(true);
       console.log(err);
     }
-
+  
   }
-
-
-
-
 
   return (
     <div className='search'>
       <div className="searchForm">
-        < input type='text' placeholder='Search' onKeyDown={handleKey} onChange={e => setUsername(e.target.value)} />
+        < input 
+        type='text' 
+        placeholder='Search' 
+        onKeyDown={handleKey} 
+        onChange={e => setUsername(e.target.value)}
+        value={username} />
       </div>
       {err && <span className='err'>User not found</span>}
       {user && <div className="userChat" onClick={handleSelect}>
