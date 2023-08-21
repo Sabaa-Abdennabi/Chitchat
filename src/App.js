@@ -7,25 +7,42 @@ import {
   Routes,
   Route,
   BrowserRouter,
+  Navigate,
+  ProtectedRoute,
 } from "react-router-dom";
-import {AuthContext} from './context/AuthContext'
+import { AuthContext } from './context/AuthContext'
 
 
 
 const App = () => {
-  const {currentUser}=useContext(AuthContext);
+
+  const { currentUser } = useContext(AuthContext);
+  const ProtectedRoute = ({children}) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
   console.log(currentUser);
   return (
     <BrowserRouter>
       <Routes>
-        <Route>
-          <Route index element={currentUser? <Home/>: <Login/>}/>
-          <Route path="login" element={<Login/>}/>
-          <Route path="register" element={<Register/>}/>
+        <Route path="/">
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
-      </BrowserRouter >
-      )
+    </BrowserRouter >
+  )
 };
 
-      export default App;
+export default App;
