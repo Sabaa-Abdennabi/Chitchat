@@ -388,3 +388,7 @@ img {
   border-bottom-right-radius: 0%;
 
 }
+
+.messageinfo img {
+  width: 40px;
+}

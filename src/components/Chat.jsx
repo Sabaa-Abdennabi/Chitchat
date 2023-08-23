@@ -4,22 +4,26 @@ import Add from '../images/add.png'
 import More from '../images/more.png'
 import Messages from './Messages'
 import Input from './Input'
-import { useState } from 'react'
+import { useContext } from 'react'
+import { ChatContext } from '../context/ChatContext'
 
 const Chat = () => {
- 
+
+  const {data}= useContext(ChatContext);
+
+
   return (
     <div className='chat'>
       <div className="chatinfo">
-      <span id="toggle-sidebarf" >Sabaa</span>
+        <span id="toggle-sidebarf" >{data.user.displayName}</span>
         <div className="chatIcons">
           <img src={Cam} alt="" />
           <img src={Add} alt="" />
           <img src={More} alt="" />
         </div>
       </div>
-        <Messages/>
-        <Input/>
+      <Messages />
+      <Input />
     </div>
   )
 }
